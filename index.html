@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labial Interactivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #d91b5c;
+        }
+        .container {
+            margin: 20px;
+        }
+        .color-picker {
+            margin: 20px;
+        }
+        .labial-preview {
+            width: 200px;
+            height: 200px;
+            background-color: #ff9999;
+            margin: 20px auto;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Juego de Creación de Labial con Remolacha</h1>
+    <div class="container">
+        <p>Selecciona la cantidad de remolacha para ajustar el color del labial:</p>
+        <input type="range" id="color-range" min="1" max="100" value="50">
+        <div class="labial-preview" id="labial-preview"></div>
+    </div>
+
+    <script>
+        const labialPreview = document.getElementById('labial-preview');
+        const colorRange = document.getElementById('color-range');
+
+        colorRange.addEventListener('input', function() {
+            const intensity = colorRange.value;
+            const colorValue = Math.floor(intensity * 2.55); // Convertimos el valor de 1-100 a un rango de color
+            labialPreview.style.backgroundColor = `rgb(255, ${255 - colorValue}, ${255 - colorValue})`;
+        });
+    </script>
+</body>
+</html>
